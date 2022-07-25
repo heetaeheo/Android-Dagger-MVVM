@@ -8,18 +8,17 @@ import javax.inject.Singleton
 
 @Module
 class RetroModule {
-
-    val baseURL = "https://api.github.com/search/"
+    private val baseURL = "https://api.github.com/search/"
 
     @Singleton
     @Provides
-    fun getRetroServiceInterface(retrofit: Retrofit) : RetroServiceInterface{
+    fun getRetroServiceInterface(retrofit: Retrofit): RetroServiceInterface {
         return retrofit.create(RetroServiceInterface::class.java)
     }
 
     @Singleton
     @Provides
-    fun getRetroFitInstacnce(): Retrofit{
+    fun getRetroFitInstance(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseURL)
             .addConverterFactory(GsonConverterFactory.create())
